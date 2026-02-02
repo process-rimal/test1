@@ -26,12 +26,27 @@ fi
 GIT_URL="$1"
 DEST_DIR="${2:-}"
 
+# Function to mask credentials in URL for display
+mask_url() {
+    local url="$1"
+    # Check if URL contains credentials (username:password@)
+    if [[ "$url" =~ .*://[^@]+@.* ]]; then
+        # Extract protocol and rest of URL
+        local protocol="${url%%://*}"
+        local rest="${url#*://}"
+        local host_path="${rest#*@}"
+        echo "${protocol}://***:***@${host_path}"
+    else
+        echo "$url"
+    fi
+}
+
 # Clone the repository
 if [ -z "$DEST_DIR" ]; then
-    echo "Cloning repository from: ${GIT_URL%@*}@..." # Hide token in output
+    echo "Cloning repository from: $(mask_url "$GIT_URL")"
     git clone "$GIT_URL"
 else
-    echo "Cloning repository from: ${GIT_URL%@*}@... to $DEST_DIR"
+    echo "Cloning repository from: $(mask_url "$GIT_URL") to $DEST_DIR"
     git clone "$GIT_URL" "$DEST_DIR"
 fi
 
