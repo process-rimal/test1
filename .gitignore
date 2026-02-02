@@ -1,0 +1,17 @@
+# Ignore cloned repository directory
+cloned-repo/
+
+# Ignore any files that might contain credentials
+*.env
+.env*
+credentials.txt
+tokens.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
