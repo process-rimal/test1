@@ -27,6 +27,25 @@ This repository provides a secure way to clone an external repository using acce
 
 3. The repository will be cloned to the `cloned-repo` directory (or customize with `CLONE_DIR` environment variable).
 
+**Advanced usage:**
+
+- Clone a different repository by passing the URL as an argument:
+  ```bash
+  ./clone-repository.sh example.com/path/to/repo.git
+  ```
+
+- Or set the REPO_URL environment variable:
+  ```bash
+  export REPO_URL=example.com/path/to/repo.git
+  ./clone-repository.sh
+  ```
+
+- Customize the clone directory:
+  ```bash
+  export CLONE_DIR=my-custom-directory
+  ./clone-repository.sh
+  ```
+
 ### Method 2: Manual clone
 
 1. Set your access token as an environment variable:
