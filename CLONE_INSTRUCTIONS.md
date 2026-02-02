@@ -52,10 +52,16 @@ git clone https://x-access-token:${GIT_TOKEN}@builder.example.com/apps/app-id.gi
 
 2. **Git Credential Manager**:
 ```bash
-git config --global credential.helper store
-# Or use a more secure option like credential-cache
+# Use cache (credentials stored in memory temporarily - more secure)
 git config --global credential.helper cache
+
+# OR use OS-specific credential managers (most secure):
+# macOS: osxkeychain
+# Windows: wincred or manager
+# Linux: libsecret or gnome-keyring
 ```
+
+⚠️ **Warning**: Avoid using `credential.helper store` as it saves credentials in plaintext on disk.
 
 3. **SSH Keys** (recommended for frequent access):
 ```bash

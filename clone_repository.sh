@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Git Repository Clone Script
 # This script demonstrates how to clone a git repository with authentication
